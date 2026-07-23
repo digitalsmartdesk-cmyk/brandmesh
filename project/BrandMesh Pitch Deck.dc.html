@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<script src="./india-coverage-map.js"></script>
+<style>
+  body{margin:0;background:#0B1220;}
+  a{color:#F97316;}
+  a:hover{color:#FB923C;}
+</style>
+</helmet>
+<div style="--type-title:64px;--type-subtitle:38px;--type-body:28px;--type-small:24px;--type-kpi:104px;--pad-x:100px;--pad-top:90px;--pad-bottom:70px;--gap-title:40px;--gap-item:24px;--accent:{{ accent }};font-family:'Inter',sans-serif;">
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Cover" data-screen-label="01" data-speaker-notes="Open with the tagline: BrandMesh turns everyday FMCG products into a measurable offline media network." style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F8FAFC;text-align:center;gap:56px;">
+  <img src="uploads/BrandMesh Logo.png" alt="BrandMesh" style="width:560px;height:auto;" />
+  <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-subtitle);color:#0F172A;">Connecting Brands with Everyday Consumers</div>
+    <div style="font-family:'Inter',sans-serif;font-weight:500;font-size:var(--type-body);color:#475569;">Scale Your Brand Through Physical Commerce</div>
+  </div>
+</section>
+
+<section data-label="The Opportunity" data-screen-label="02" data-speaker-notes="Set up the problem: digital attention is expensive and fleeting, while FMCG products already reach every home." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">Consumer Attention Has Shifted</div>
+  <div style="display:flex;gap:80px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:var(--gap-item);flex:1;">
+      <div style="font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Digital advertising is becoming:</div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#F97316" stroke-width="2"/><line x1="8" y1="8" x2="32" y2="32" stroke="#F97316" stroke-width="2"/></svg>
+        <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">More expensive</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#F97316" stroke-width="2"/><line x1="8" y1="8" x2="32" y2="32" stroke="#F97316" stroke-width="2"/></svg>
+        <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Less trusted</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#F97316" stroke-width="2"/><line x1="8" y1="8" x2="32" y2="32" stroke="#F97316" stroke-width="2"/></svg>
+        <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Easier to ignore</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:var(--gap-item);flex:1;border-left:1px solid #E2E8F0;padding-left:80px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-subtitle);color:#0F172A;">Millions of FMCG products enter homes every day.</div>
+      <div style="font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">BrandMesh transforms these everyday products into measurable advertising media.</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:40px;background:#0F172A;border-radius:20px;padding:40px 56px;">
+    <div style="display:flex;align-items:center;gap:16px;flex:1;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#94A3B8;">Digital Ads</div>
+      <svg width="48" height="24" viewBox="0 0 48 24" fill="none"><line x1="0" y1="12" x2="38" y2="12" stroke="#94A3B8" stroke-width="2"/><polyline points="30,4 40,12 30,20" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-body);color:#94A3B8;">Skipped</div>
+    </div>
+    <div style="width:1px;height:48px;background:#334155;"></div>
+    <div style="display:flex;align-items:center;gap:16px;flex:1;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#F8FAFC;">BrandMesh</div>
+      <svg width="48" height="24" viewBox="0 0 48 24" fill="none"><line x1="0" y1="12" x2="38" y2="12" stroke="var(--accent)" stroke-width="2"/><polyline points="30,4 40,12 30,20" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-body);color:var(--accent);">Seen During Product Usage</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="The Problem" data-screen-label="03" data-speaker-notes="Four pressures marketers face today with digital-only strategies." style="display:flex;flex-direction:column;background:#0F172A;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#F8FAFC;">Brands Are Paying More for Less</div>
+    <div style="font-family:'Inter',sans-serif;font-size:var(--type-body);color:#94A3B8;">Today's marketers struggle with:</div>
+  </div>
+  <div style="display:flex;gap:32px;flex:1;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:28px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:44px;">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2"/><polyline points="13,26 19,18 24,22 31,13" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><polyline points="24,13 31,13 31,20" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#F8FAFC;line-height:1.3;">Rising Customer Acquisition Costs</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:28px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:44px;">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2"/><line x1="9" y1="9" x2="35" y2="35" stroke="var(--accent)" stroke-width="2"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#F8FAFC;line-height:1.3;">Digital Ad Fatigue</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:28px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:44px;">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="19" stroke="var(--accent)" stroke-width="2" fill="none"/><circle cx="22" cy="22" r="11" stroke="var(--accent)" stroke-width="2" fill="none"/><circle cx="22" cy="22" r="4" fill="var(--accent)"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#F8FAFC;line-height:1.3;">Weak Real-World Consumer Targeting</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:28px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:44px;">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2"/><polyline points="13,18 19,26 24,22 31,31" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><polyline points="24,31 31,31 31,24" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#F8FAFC;line-height:1.3;">Declining Campaign ROI</div>
+    </div>
+  </div>
+  <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-subtitle);color:#F8FAFC;">Consumers no longer need more ads. They need more relevant experiences.</div>
+</section>
+
+<section data-label="Introducing BrandMesh" data-screen-label="04" data-speaker-notes="Explain the core model: every product pack becomes measurable marketing media." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="display:flex;flex-direction:column;gap:24px;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">Offline Performance Marketing</div>
+    <div style="font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;max-width:1400px;">BrandMesh connects advertisers with consumers through FMCG products already purchased and trusted. Every product pack becomes a marketing opportunity. Every campaign becomes measurable.</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:36px;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;">How it works</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:nowrap;">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:28px 18px;width:200px;height:120px;"><div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:#0F172A;">Brand</div></div>
+      <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><line x1="0" y1="10" x2="22" y2="10" stroke="#94A3B8" stroke-width="2"/><polyline points="16,3 24,10 16,17" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:28px 18px;width:200px;height:120px;"><div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:#0F172A;">Campaign Design</div></div>
+      <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><line x1="0" y1="10" x2="22" y2="10" stroke="#94A3B8" stroke-width="2"/><polyline points="16,3 24,10 16,17" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#0F172A;border-radius:16px;padding:28px 18px;width:200px;height:120px;"><div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:var(--accent);">BrandMesh</div></div>
+      <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><line x1="0" y1="10" x2="22" y2="10" stroke="#94A3B8" stroke-width="2"/><polyline points="16,3 24,10 16,17" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:28px 18px;width:200px;height:120px;"><div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:#0F172A;">FMCG Product</div></div>
+      <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><line x1="0" y1="10" x2="22" y2="10" stroke="#94A3B8" stroke-width="2"/><polyline points="16,3 24,10 16,17" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:28px 18px;width:200px;height:120px;"><div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:#0F172A;">Retail Store</div></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px;">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:28px 18px;width:200px;height:120px;"><div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:#0F172A;">Consumer Home</div></div>
+      <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><line x1="0" y1="10" x2="22" y2="10" stroke="#94A3B8" stroke-width="2"/><polyline points="16,3 24,10 16,17" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--accent);border-radius:16px;padding:28px 18px;width:280px;height:120px;"><div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:#FFFFFF;">QR Scan / Coupon / Purchase</div></div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Why BrandMesh Wins" data-screen-label="05" data-speaker-notes="Direct side-by-side comparison against digital impressions." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;max-width:1500px;">Unlike Digital Impressions, BrandMesh Delivers Repeated Consumer Exposure</div>
+  <div style="flex:1;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid #E2E8F0;">
+    <div style="display:flex;background:#0F172A;">
+      <div style="flex:1;padding:26px 48px;font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#94A3B8;">Digital Ads</div>
+      <div style="flex:1;padding:26px 48px;font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:var(--accent);">BrandMesh</div>
+    </div>
+    <div style="display:flex;background:#FFFFFF;border-top:1px solid #E2E8F0;">
+      <div style="flex:1;padding:30px 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Seconds of attention</div>
+      <div style="flex:1;padding:30px 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Days or weeks</div>
+    </div>
+    <div style="display:flex;background:#F8FAFC;border-top:1px solid #E2E8F0;">
+      <div style="flex:1;padding:30px 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Easy to skip</div>
+      <div style="flex:1;padding:30px 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Seen repeatedly</div>
+    </div>
+    <div style="display:flex;background:#FFFFFF;border-top:1px solid #E2E8F0;">
+      <div style="flex:1;padding:30px 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Online trust issues</div>
+      <div style="flex:1;padding:30px 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Trusted FMCG brands</div>
+    </div>
+    <div style="display:flex;background:#F8FAFC;border-top:1px solid #E2E8F0;">
+      <div style="flex:1;padding:30px 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Estimated attribution</div>
+      <div style="flex:1;padding:30px 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Direct measurement</div>
+    </div>
+    <div style="display:flex;background:#FFFFFF;border-top:1px solid #E2E8F0;">
+      <div style="flex:1;padding:30px 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">High CAC</div>
+      <div style="flex:1;padding:30px 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Lower acquisition cost</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Our Network" data-screen-label="06" data-speaker-notes="Show scale of the physical distribution network and geographic coverage." style="display:flex;flex-direction:column;background:#0F172A;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#F8FAFC;max-width:1500px;">India's Growing Offline Retail Media Infrastructure</div>
+  <div style="flex:1;display:flex;gap:56px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;">
+      <div style="display:flex;gap:24px;">
+        <div style="flex:1;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--accent);">7,000+</div>
+          <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#94A3B8;">Retailers</div>
+        </div>
+        <div style="flex:1;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--accent);">500+</div>
+          <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#94A3B8;">Wholesalers</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;flex:1;">
+        <div style="flex:1;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--accent);">150+</div>
+          <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#94A3B8;">FMCG Brands</div>
+        </div>
+        <div style="flex:1;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:60px;color:var(--accent);">4 States</div>
+          <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#94A3B8;">Active Coverage</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;align-items:center;gap:32px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:20px 36px;">
+      <india-coverage-map width="460" height="500" land-color="#0F172A" stroke-color="#334155" pin-color="var(--accent)" label-color="#F8FAFC" style="width:460px;height:500px;flex-shrink:0;"></india-coverage-map>
+      <div style="display:flex;flex-direction:column;gap:22px;">
+        <div style="display:flex;align-items:center;gap:16px;"><div style="width:14px;height:14px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Delhi NCR</div></div>
+        <div style="display:flex;align-items:center;gap:16px;"><div style="width:14px;height:14px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Haryana</div></div>
+        <div style="display:flex;align-items:center;gap:16px;"><div style="width:14px;height:14px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">West Uttar Pradesh</div></div>
+        <div style="display:flex;align-items:center;gap:16px;"><div style="width:14px;height:14px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Uttarakhand</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Intelligent Audience Matching" data-screen-label="07" data-speaker-notes="Consumption patterns predict which advertisers should reach which households." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">Reach Consumers Based on What They Buy</div>
+  <div style="flex:1;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid #E2E8F0;">
+    <div style="display:flex;background:#0F172A;">
+      <div style="flex:1;padding:22px 48px;font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#94A3B8;">FMCG Product</div>
+      <div style="flex:2;padding:22px 48px;font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:var(--accent);">Ideal Advertisers</div>
+    </div>
+    <div style="display:flex;background:#FFFFFF;border-top:1px solid #E2E8F0;flex:1;align-items:center;">
+      <div style="flex:1;padding:0 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Tea</div>
+      <div style="flex:2;padding:0 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Biscuits, Kitchenware, UPI Apps</div>
+    </div>
+    <div style="display:flex;background:#F8FAFC;border-top:1px solid #E2E8F0;flex:1;align-items:center;">
+      <div style="flex:1;padding:0 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Baby Products</div>
+      <div style="flex:2;padding:0 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Insurance, Parenting Apps</div>
+    </div>
+    <div style="display:flex;background:#FFFFFF;border-top:1px solid #E2E8F0;flex:1;align-items:center;">
+      <div style="flex:1;padding:0 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Organic Food</div>
+      <div style="flex:2;padding:0 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Health Brands</div>
+    </div>
+    <div style="display:flex;background:#F8FAFC;border-top:1px solid #E2E8F0;flex:1;align-items:center;">
+      <div style="flex:1;padding:0 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Dry Fruits</div>
+      <div style="flex:2;padding:0 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Premium Services</div>
+    </div>
+    <div style="display:flex;background:#FFFFFF;border-top:1px solid #E2E8F0;flex:1;align-items:center;">
+      <div style="flex:1;padding:0 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Snacks</div>
+      <div style="flex:2;padding:0 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">OTT, Quick Commerce</div>
+    </div>
+    <div style="display:flex;background:#F8FAFC;border-top:1px solid #E2E8F0;flex:1;align-items:center;">
+      <div style="flex:1;padding:0 48px;font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-body);color:#0F172A;">Personal Care</div>
+      <div style="flex:2;padding:0 48px;font-family:'Inter',sans-serif;font-size:var(--type-body);color:#475569;">Beauty Brands</div>
+    </div>
+  </div>
+  <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-subtitle);color:#0F172A;">Consumer behavior becomes your targeting engine.</div>
+</section>
+
+<section data-label="Campaign Formats" data-screen-label="08" data-speaker-notes="Range of performance formats available today, with future-ready formats on the roadmap." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">Performance Campaigns</div>
+  <div style="display:flex;gap:28px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:36px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="32" x2="22" y2="18" stroke="var(--accent)" stroke-width="2"/><line x1="22" y1="18" x2="32" y2="26" stroke="var(--accent)" stroke-width="2"/><circle cx="10" cy="32" r="4" fill="var(--accent)"/><circle cx="22" cy="18" r="4" fill="var(--accent)"/><circle cx="32" cy="26" r="4" fill="var(--accent)"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#0F172A;">Discount Coupons</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:36px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="32" x2="22" y2="18" stroke="var(--accent)" stroke-width="2"/><line x1="22" y1="18" x2="32" y2="26" stroke="var(--accent)" stroke-width="2"/><circle cx="10" cy="32" r="4" fill="var(--accent)"/><circle cx="22" cy="18" r="4" fill="var(--accent)"/><circle cx="32" cy="26" r="4" fill="var(--accent)"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#0F172A;">Cashback Offers</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:36px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="32" x2="22" y2="18" stroke="var(--accent)" stroke-width="2"/><line x1="22" y1="18" x2="32" y2="26" stroke="var(--accent)" stroke-width="2"/><circle cx="10" cy="32" r="4" fill="var(--accent)"/><circle cx="22" cy="18" r="4" fill="var(--accent)"/><circle cx="32" cy="26" r="4" fill="var(--accent)"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#0F172A;">Product Bundles</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:28px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:36px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="32" x2="22" y2="18" stroke="var(--accent)" stroke-width="2"/><line x1="22" y1="18" x2="32" y2="26" stroke="var(--accent)" stroke-width="2"/><circle cx="10" cy="32" r="4" fill="var(--accent)"/><circle cx="22" cy="18" r="4" fill="var(--accent)"/><circle cx="32" cy="26" r="4" fill="var(--accent)"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#0F172A;">Cross Promotions</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:36px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="32" x2="22" y2="18" stroke="var(--accent)" stroke-width="2"/><line x1="22" y1="18" x2="32" y2="26" stroke="var(--accent)" stroke-width="2"/><circle cx="10" cy="32" r="4" fill="var(--accent)"/><circle cx="22" cy="18" r="4" fill="var(--accent)"/><circle cx="32" cy="26" r="4" fill="var(--accent)"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#0F172A;">QR Activation</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:36px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><line x1="10" y1="32" x2="22" y2="18" stroke="var(--accent)" stroke-width="2"/><line x1="22" y1="18" x2="32" y2="26" stroke="var(--accent)" stroke-width="2"/><circle cx="10" cy="32" r="4" fill="var(--accent)"/><circle cx="22" cy="18" r="4" fill="var(--accent)"/><circle cx="32" cy="26" r="4" fill="var(--accent)"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#0F172A;">Product Sampling</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px;background:#0F172A;border-radius:20px;padding:36px 44px;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;">Future-ready campaign formats</div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;background:#1E293B;border-radius:100px;padding:14px 28px;">NFC Tags</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;background:#1E293B;border-radius:100px;padding:14px 28px;">Smart QR Experiences</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;background:#1E293B;border-radius:100px;padding:14px 28px;">Loyalty Rewards</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;background:#1E293B;border-radius:100px;padding:14px 28px;">Digital Wallet Credits</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Campaign Journey" data-screen-label="09" data-speaker-notes="The end-to-end path from brand discovery to analytics." style="display:flex;flex-direction:column;background:#0F172A;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#F8FAFC;">From Brand Discovery to Campaign Analytics</div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;gap:24px;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:#1E293B;border:1px solid #334155;border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--accent);">01</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;">Brand Discovery</div></div>
+      <svg width="28" height="20" viewBox="0 0 28 20" fill="none"><line x1="0" y1="10" x2="18" y2="10" stroke="#475569" stroke-width="2"/><polyline points="12,3 20,10 12,17" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:#1E293B;border:1px solid #334155;border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--accent);">02</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;">Audience Matching</div></div>
+      <svg width="28" height="20" viewBox="0 0 28 20" fill="none"><line x1="0" y1="10" x2="18" y2="10" stroke="#475569" stroke-width="2"/><polyline points="12,3 20,10 12,17" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:#1E293B;border:1px solid #334155;border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--accent);">03</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;">Campaign Planning</div></div>
+      <svg width="28" height="20" viewBox="0 0 28 20" fill="none"><line x1="0" y1="10" x2="18" y2="10" stroke="#475569" stroke-width="2"/><polyline points="12,3 20,10 12,17" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:#1E293B;border:1px solid #334155;border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--accent);">04</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;">Creative Production</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:#1E293B;border:1px solid #334155;border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--accent);">05</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;">Packaging Integration</div></div>
+      <svg width="28" height="20" viewBox="0 0 28 20" fill="none"><line x1="0" y1="10" x2="18" y2="10" stroke="#475569" stroke-width="2"/><polyline points="12,3 20,10 12,17" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:#1E293B;border:1px solid #334155;border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--accent);">06</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;">Retail Distribution</div></div>
+      <svg width="28" height="20" viewBox="0 0 28 20" fill="none"><line x1="0" y1="10" x2="18" y2="10" stroke="#475569" stroke-width="2"/><polyline points="12,3 20,10 12,17" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:#1E293B;border:1px solid #334155;border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--accent);">07</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#F8FAFC;">Consumer Engagement</div></div>
+      <svg width="28" height="20" viewBox="0 0 28 20" fill="none"><line x1="0" y1="10" x2="18" y2="10" stroke="#475569" stroke-width="2"/><polyline points="12,3 20,10 12,17" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1;display:flex;align-items:center;gap:20px;background:var(--accent);border-radius:16px;padding:26px 30px;"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:#0F172A;">08</div><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:22px;color:#FFFFFF;">Campaign Analytics</div></div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Proven Results" data-screen-label="10" data-speaker-notes="Real numbers from live campaigns build credibility before the ask." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">Real Campaign Performance</div>
+  <div style="flex:1;display:flex;gap:24px;">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:76px;color:#0F172A;">600+</div>
+      <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#475569;line-height:1.3;">Verified Customers Acquired</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;background:#0F172A;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:76px;color:var(--accent);">4.5&#215;</div>
+      <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#94A3B8;line-height:1.3;">More Leads</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:76px;color:#0F172A;">15%</div>
+      <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#475569;line-height:1.3;">Campaign Conversion</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:76px;color:#0F172A;">&#8377;3L</div>
+      <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#475569;line-height:1.3;">Sales Generated</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;background:#0F172A;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:76px;color:var(--accent);">130</div>
+      <div style="font-family:'Inter',sans-serif;font-size:var(--type-small);color:#94A3B8;line-height:1.3;">New Retail Stores Activated</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Industries We Serve" data-screen-label="11" data-speaker-notes="Broad category coverage shows the model isn't limited to one vertical." style="display:flex;flex-direction:column;background:#0F172A;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#F8FAFC;">Built for Every Consumer Category</div>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:24px;">
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">D2C Brands</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Food &amp; Beverage</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Quick Commerce</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Restaurants</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Healthcare</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:var(--accent);border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#FFFFFF;">Beauty</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Insurance</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">EdTech</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Fintech</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Home Services</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Automobiles</div></div>
+    <div style="display:flex;align-items:center;justify-content:center;background:#1E293B;border:1px solid #334155;border-radius:16px;"><div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">Consumer Electronics</div></div>
+  </div>
+</section>
+
+<section data-label="Why Advertisers Choose BrandMesh" data-screen-label="12" data-speaker-notes="Five concrete reasons advertisers pick BrandMesh over other offline media." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">Why Advertisers Choose BrandMesh</div>
+  <div style="flex:1;display:flex;gap:24px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:var(--accent);">01</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:26px;color:#0F172A;">Physical Media</div>
+      <div style="font-family:'Inter',sans-serif;font-size:22px;color:#475569;line-height:1.4;">Advertising inside consumers' homes.</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:var(--accent);">02</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:26px;color:#0F172A;">Trusted Environment</div>
+      <div style="font-family:'Inter',sans-serif;font-size:22px;color:#475569;line-height:1.4;">Messages appear on products consumers already purchase.</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:var(--accent);">03</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:26px;color:#0F172A;">Better Targeting</div>
+      <div style="font-family:'Inter',sans-serif;font-size:22px;color:#475569;line-height:1.4;">Consumption-based audience selection.</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:var(--accent);">04</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:26px;color:#0F172A;">Performance Analytics</div>
+      <div style="font-family:'Inter',sans-serif;font-size:22px;color:#475569;line-height:1.4;">Track every scan and redemption.</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#0F172A;border-radius:20px;padding:40px 32px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:var(--accent);">05</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:26px;color:#F8FAFC;">Faster Market Testing</div>
+      <div style="font-family:'Inter',sans-serif;font-size:22px;color:#94A3B8;line-height:1.4;">Launch campaigns in specific cities or categories.</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="More Than Stickers" data-screen-label="13" data-speaker-notes="Positions BrandMesh as a platform roadmap, not a one-off sticker vendor." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">A Complete Offline Retail Media Platform</div>
+  <div style="flex:1;display:flex;gap:28px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;">Today's Services</div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#0F172A" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#0F172A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#0F172A;">Product Stickers</div></div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#0F172A" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#0F172A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#0F172A;">QR Campaigns</div></div>
+    </div>
+    <sc-if value="{{ showRoadmap }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:40px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:#94A3B8;text-transform:uppercase;letter-spacing:0.05em;">Tomorrow</div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#94A3B8" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#475569;">Product Sampling</div></div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#94A3B8" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#475569;">In-Pack Inserts</div></div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#94A3B8" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#475569;">Bundle Promotions</div></div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#0F172A;border-radius:20px;padding:40px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-small);color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;">Future</div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#F8FAFC" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#F8FAFC" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#F8FAFC;">Retail Media Marketplace</div></div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#F8FAFC" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#F8FAFC" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#F8FAFC;">Campaign Dashboard</div></div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#F8FAFC" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#F8FAFC" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#F8FAFC;">Consumer Insights</div></div>
+      <div style="display:flex;align-items:center;gap:16px;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" stroke="#F8FAFC" stroke-width="2" fill="none"/><polyline points="8,14 12,18 20,9" stroke="#F8FAFC" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-family:'Inter',sans-serif;font-weight:500;font-size:24px;color:#F8FAFC;">AI Audience Matching</div></div>
+    </div>
+    </sc-if>
+  </div>
+  <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-subtitle);color:#0F172A;">BrandMesh is building India's offline advertising infrastructure.</div>
+</section>
+
+<section data-label="Campaign Packages" data-screen-label="14" data-speaker-notes="Three tiers of engagement, scaled to unit volume and rollout scope." style="display:flex;flex-direction:column;background:#0F172A;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#F8FAFC;">Campaign Packages</div>
+  <div style="flex:1;display:flex;gap:28px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:26px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:44px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:32px;color:#F8FAFC;">Starter</div>
+      <div style="height:1px;background:#334155;"></div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">10,000 Units</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">Single Product Category</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">Single Geography</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">Campaign Report</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:26px;background:var(--accent);border-radius:20px;padding:44px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:32px;color:#FFFFFF;">Growth</div>
+      <div style="height:1px;background:rgba(255,255,255,0.35);"></div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#FFFFFF;">50,000 Units</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#FFFFFF;">Multiple Categories</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#FFFFFF;">Advanced Analytics</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#FFFFFF;">Campaign Optimisation</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:26px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:44px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:32px;color:#F8FAFC;">Enterprise</div>
+      <div style="height:1px;background:#334155;"></div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">100,000+ Units</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">National Rollout</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">Exclusive Partnerships</div>
+      <div style="font-family:'Inter',sans-serif;font-size:24px;color:#CBD5E1;">Dedicated Campaign Manager</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;color:var(--accent);margin-top:auto;">Pricing on Request</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Why Now" data-screen-label="15" data-speaker-notes="Three converging market trends make this the right moment." style="display:flex;flex-direction:column;background:#F8FAFC;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#0F172A;">Three Trends Are Reshaping Marketing</div>
+  <div style="flex:1;display:flex;gap:28px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:44px;">
+      <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2" fill="none"/><polyline points="13,22 19,29 31,15" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:28px;color:#0F172A;line-height:1.3;">Rising digital advertising costs</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:44px;">
+      <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2" fill="none"/><polyline points="13,22 19,29 31,15" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:28px;color:#0F172A;line-height:1.3;">Rapid growth of D2C brands</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:44px;">
+      <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" stroke="var(--accent)" stroke-width="2" fill="none"/><polyline points="13,22 19,29 31,15" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:28px;color:#0F172A;line-height:1.3;">Organized FMCG distribution</div>
+    </div>
+  </div>
+  <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:var(--type-subtitle);color:#0F172A;">BrandMesh sits at the intersection of all three.</div>
+</section>
+
+<section data-label="Our Vision" data-screen-label="16" data-speaker-notes="Frame the long-term ambition beyond campaign execution." style="display:flex;flex-direction:column;background:#0F172A;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);gap:var(--gap-title);">
+  <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#F8FAFC;">Building India's Largest Offline Retail Media Network</div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:28px;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:48px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:22px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;">Today</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:32px;color:#F8FAFC;">Campaign Execution</div>
+    </div>
+    <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><line x1="0" y1="12" x2="30" y2="12" stroke="#475569" stroke-width="2"/><polyline points="22,4 32,12 22,20" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:48px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:22px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;">Tomorrow</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:32px;color:#F8FAFC;">Retail Media Platform</div>
+    </div>
+    <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><line x1="0" y1="12" x2="30" y2="12" stroke="#475569" stroke-width="2"/><polyline points="22,4 32,12 22,20" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:var(--accent);border-radius:20px;padding:48px;">
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:22px;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.06em;">Future</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:32px;color:#FFFFFF;">Data-Driven Consumer Commerce Network</div>
+    </div>
+  </div>
+  <div style="font-family:'Inter',sans-serif;font-size:var(--type-body);color:#94A3B8;max-width:1500px;">BrandMesh will become the infrastructure connecting advertisers, FMCG brands, retailers, and consumers.</div>
+</section>
+
+<section data-label="Closing" data-screen-label="17" data-speaker-notes="Close with a direct call to action and contact details." style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0F172A;text-align:center;gap:48px;position:relative;">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:var(--type-title);color:#F8FAFC;">Let's Build Your Next Campaign</div>
+    <div style="font-family:'Inter',sans-serif;font-size:var(--type-body);color:#94A3B8;">Connect Your Brand With Millions of Everyday Consumers</div>
+  </div>
+  <div style="display:flex;align-items:baseline;gap:2px;">
+    <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:52px;color:#F8FAFC;">Brand</div>
+    <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:52px;color:var(--accent);">Mesh</div>
+  </div>
+  <div style="display:flex;gap:64px;">
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+      <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:22px;color:#64748B;text-transform:uppercase;letter-spacing:0.06em;">Website</div>
+      <a href="https://brandmesh.in" style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;">brandmesh.in</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+      <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:22px;color:#64748B;text-transform:uppercase;letter-spacing:0.06em;">Email</div>
+      <a href="mailto:hello@brandmesh.in" style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;">hello@brandmesh.in</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+      <div style="font-family:'Inter',sans-serif;font-weight:600;font-size:22px;color:#64748B;text-transform:uppercase;letter-spacing:0.06em;">Phone</div>
+      <div style="font-family:'Manrope',sans-serif;font-weight:600;font-size:26px;color:#F8FAFC;">+91 00000 00000</div>
+    </div>
+  </div>
+</section>
+
+</x-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F97316&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#F97316&quot;,&quot;#EA580C&quot;,&quot;#DC2626&quot;,&quot;#0EA5E9&quot;]},&quot;showRoadmap&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accentColor ?? '#F97316',
+      showRoadmap: this.props.showRoadmap ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
